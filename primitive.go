@@ -2,7 +2,7 @@ package amqp
 
 import "io"
 
-// ReadBoolean reads a single byte, returning true for 0x01,
+// readBoolean reads a single byte, returning true for 0x01,
 // false for 0x00, and returning an InvalidFormat error for any other value.
 // Errors are passed through.
 func readBoolean(r io.Reader) (bool, error) {

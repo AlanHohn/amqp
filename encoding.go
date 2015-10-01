@@ -73,6 +73,10 @@ func ReadNext(r io.Reader) (interface{}, error) {
 		var v float32
 		err := binary.Read(r, binary.BigEndian, &v)
 		return v, err
+	case 0x73:
+		var v rune
+		err := binary.Read(r, binary.BigEndian, &v)
+		return v, err
 	case 0x80:
 		var v uint64
 		err := binary.Read(r, binary.BigEndian, &v)
