@@ -5,8 +5,6 @@ package amqp
 
 import "errors"
 
-type UUID [16]byte
-
 // ErrInvalidCode indicates an unrecognized AMQP format code
 var ErrInvalidCode = errors.New("Invalid Code")
 
