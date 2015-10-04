@@ -122,6 +122,17 @@ func ReadNext(r io.Reader) (interface{}, error) {
 		v := make([]byte, size, size)
 		err = binary.Read(r, binary.BigEndian, &v)
 		return v, err
+	case 0xa1:
+		size, err := readByte(r)
+		if err != nil {
+			return nil, err
+		}
+		v := make([]byte, size, size)
+		err = binary.Read(r, binary.BigEndian, &v)
+		if err != nil {
+			return nil, err
+		}
+		return string(v), err
 	case 0xb0:
 		size, err := readUInt(r)
 		if err != nil {
@@ -130,6 +141,17 @@ func ReadNext(r io.Reader) (interface{}, error) {
 		v := make([]byte, size, size)
 		err = binary.Read(r, binary.BigEndian, &v)
 		return v, err
+	case 0xb1:
+		size, err := readUInt(r)
+		if err != nil {
+			return nil, err
+		}
+		v := make([]byte, size, size)
+		err = binary.Read(r, binary.BigEndian, &v)
+		if err != nil {
+			return nil, err
+		}
+		return string(v), err
 	}
 	return nil, ErrInvalidCode
 }
